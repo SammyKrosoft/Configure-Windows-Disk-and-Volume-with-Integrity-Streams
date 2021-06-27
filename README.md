@@ -136,6 +136,17 @@ Set-FileIntegrity C:\ExchangeVolumes\ExVolXX\ -Enable $false
 
 Get-FileIntegrity C:\ExchangeVolumes\ExVolXX
 
+<####### OUTPUT
+
+[PS] C:\>Get-FileIntegrity C:\ExchangeVolumes\ExVolXX
+
+FileName                   Enabled Enforced
+--------                   ------- --------
+C:\ExchangeVolumes\ExVolXX False   True  
+
+#>
+
+
 Get-FileIntegrity C:\ExchangeVolumes\ExVolXX\test.txt
 <#RESULT
 
