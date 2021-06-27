@@ -57,7 +57,7 @@ FileName                                          Enabled Enforced
 \\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\ False   True    
 ```
 
-You can enable or disable Integrity Streams uing Set-FileIntegrity:
+You can enable or disable Integrity Streams using Set-FileIntegrity:
 
 ```powershell
 Set-FileIntegrity "\\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\" -Enable $False
