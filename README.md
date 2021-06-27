@@ -126,6 +126,7 @@ C:\ExchangeVolumes\ExVolXX\
 
 # Annex - tests on files created before or after setting File Integrity on volumes
 
+```powershell
 #Disabling File Integrity at the root level
 Set-FileIntegrity C:\ExchangeVolumes\ExVolXX\ -Enable $false
 #File Integrity now disabled
@@ -161,6 +162,8 @@ C:\ExchangeVolumes\ExVolXX\test-createdAFTERdisablingFileIntegCheck.txt False   
 ==> Integrity DISABLED !! :-)
 
 #>
+
+```
 
 **CONCLUSION: All files created AFTER File Integrity disabled on the root have their integrity DISABLED
 All files created BEFORE file integrity disabled will have their integritythat remain ENABLED**
