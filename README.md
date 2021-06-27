@@ -23,7 +23,7 @@ After formatting the volume with PowerShell, you can assign a drive letter or a 
 
 and then:
 
-<img src=https://user-images.githubusercontent.com/33433229/123560647-9a9a1e80-d771-11eb-8a43-b23ca46afead.png width = 200)
+<img src=https://user-images.githubusercontent.com/33433229/123560647-9a9a1e80-d771-11eb-8a43-b23ca46afead.png width = 200>
 
 
 And in PowerShell that would be like:
