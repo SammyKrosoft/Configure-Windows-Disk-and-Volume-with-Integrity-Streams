@@ -123,3 +123,43 @@ And you'll get an output like the below:
 C:\ExchangeVolumes\ExVolXX\
 \\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\
 ```
+
+# Annex - tests on files created before or after setting File Integrity on volumes
+
+#Disabling File Integrity at the root level
+Set-FileIntegrity C:\ExchangeVolumes\ExVolXX\ -Enable $false
+#File Integrity now disabled
+
+#Testing test.txt created *BEFORE* disabling file integrity on the root:
+
+
+Get-FileIntegrity C:\ExchangeVolumes\ExVolXX
+
+Get-FileIntegrity C:\ExchangeVolumes\ExVolXX\test.txt
+<#RESULT
+
+[PS] C:\>Get-FileIntegrity C:\ExchangeVolumes\ExVolXX\test.txt
+
+FileName                            Enabled Enforced
+--------                            ------- --------
+C:\ExchangeVolumes\ExVolXX\test.txt True    True
+
+==> STILL ENABLED :-(
+
+#>
+
+#Creating new file *AFTER* disabling file integrity on the root:
+Get-FileIntegrity C:\ExchangeVolumes\ExVolXX\test-createdAFTERdisablingFileIntegCheck.txt
+
+<#RESULT
+[PS] C:\>Get-FileIntegrity C:\ExchangeVolumes\ExVolXX\test-createdAFTERdisablingFileIntegCheck.txt
+
+FileName                                                                Enabled Enforced
+--------                                                                ------- --------
+C:\ExchangeVolumes\ExVolXX\test-createdAFTERdisablingFileIntegCheck.txt False   True  
+
+==> Integrity DISABLED !! :-)
+
+#>
+
+# CONCLUSION: All files created AFTER File Integrity disabled on the root have their integrity DISABLED (Y)
