@@ -17,6 +17,35 @@ $PartitionToFormat = Get-Partition -DiskNumber $DiskToFormat.Number -PartitionNu
 Format-Volume -Partition $PartitionToFormat –AllocationUnitSize 65536 –FileSystem REFS –NewFileSystemLabel “ExVolXX" –SetIntegrityStreams:$false -confirm:$false
 ```
 
+- or after formatting, using ```Set-FileIntegrity```
+
+You can use ```Get-FileIntegrity``` on the volume to check if the "IntegrityStreams" is enabled or not. For the whole volume, you'll have to run ```Get/Set-FileIntegrity``` on the root volume.
+For this, it's easier to get if the volume has a letter or mountpoints assigned to it, but you can also check the volume root using the Volume ID.
+
+To get the volume ID, you need to get the partition you want to check in Powershell, which is achieved using the same commands we used above when we formatted the volume:
+
+```powershell
+$DiskToCheck = Get-Disk 3
+$PartitionToCheck = Get-Partition -DiskNumber $DiskToCheck.Number -PartitionNumber 2
+```
+
+And to get the volume access point to use with Get/Set-FileIntegrity:
+
+```powershell
+$PartitionToCheck.AccessPaths
+```
+
+If you didn't assign mountpoints or letters to that volume, you'll see something like the below:
+
+```output
+[PS] C:\>$PartitionToFormat.AccessPaths
+\\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\
+```
+
+# Bonus - Adding a volume Mount Point a volume using PowerShell
+
+## Appearance on the Disk Management Console
+
 After formatting the volume with PowerShell, you can assign a drive letter or a volume mount point to the volume. You can do so using PowerShell as well, or using the Disk Management Console:
 
 <img src=https://user-images.githubusercontent.com/33433229/123560522-b224d780-d770-11eb-80f0-d7f1a4e565d2.png Width = 400>
@@ -26,17 +55,35 @@ and then:
 <img src=https://user-images.githubusercontent.com/33433229/123560647-9a9a1e80-d771-11eb-8a43-b23ca46afead.png width = 200>
 
 
+## And the equivalent in PowerShell
+
 And in PowerShell that would be like:
 
 ```powershell
-#Just taking back the variable defined above before formatting, as it will design the same partition we''ve been working with 
+#Just taking back the variable defined above before formatting, as it will design the same partition we've been working with 
 $PartitionToFormat = Get-Partition -DiskNumber $DiskToFormat.Number -PartitionNumber 2
 
-# Specifying that we don''t want to add a simple drive letter for that partition (piping the #PartitionToFormat variable into Set-Partition)
-$PartitionToFromat | Set-Partition -NoDefaultDriveLetter:$True
+# Specifying that we don't want to add a simple drive letter for that partition (piping the #PartitionToFormat variable into Set-Partition)
+$PartitionToFormat | Set-Partition -NoDefaultDriveLetter:$True
 
 #Adding the mountpoint using the #partitionToFormat variable into Add-PartitionAccessPath
 # NOTE: the NFTS folder must exist before we can assign it
 $PartitionToFormat | Add-PartitionAccessPath $PartitionToFormat -AccessPath "C:\ExchangeVolumes\ExVolXX"-Passthru
 ```
 
+## How to check that it worked using PowerShell ?
+
+Simply check the property named "AccessPaths" of the Partition object, like we did earlier:
+NOTE: don't forget to refresh the $PartitionToFormat variable otherwise you'll see the Access Paths of the partition before you actually assigned an access path to it:
+
+```powershell
+$PartitionToFormat = Get-Partition -DiskNumber $DiskToFormat.Number -PartitionNumber 2
+$PartitionToFormat.AccessPaths
+```
+And you'll get an output like the below:
+
+```output
+[PS] C:\>$PartitionToFormat.AccessPaths
+C:\ExchangeVolumes\ExVolXX\
+\\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\
+```
