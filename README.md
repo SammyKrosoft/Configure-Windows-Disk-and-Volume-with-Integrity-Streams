@@ -65,7 +65,7 @@ Set-FileIntegrity "\\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\" -Enabled $
 
 If you don't want to copy/paste or type the whole volume number, you can use the PowerShell variable you used before where you stored the Partition object (```$PartitionToCheck```):
 
-```
+```powershell
 #Just pasting again the command sequence to store the partition object in a PowerShell variable:
 $DiskToCheck = Get-Disk 3
 $PartitionToCheck = Get-Partition -DiskNumber $DiskToCheck.Number -PartitionNumber 2
