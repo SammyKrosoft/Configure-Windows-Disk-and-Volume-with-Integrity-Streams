@@ -37,7 +37,7 @@ $PartitionToCheck.AccessPaths
 
 If you didn't assign mountpoints or letters to that volume, you'll see something like the below:
 
-```output
+```powershell
 [PS] C:\>$PartitionToFormat.AccessPaths
 \\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\
 ```
@@ -49,7 +49,7 @@ Get-FileIntegrity "\\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\"
 ```
 
 And if it's disabled, the output will look like the below on the "Enabled" property:
-```output
+```powershell
 [PS] C:\>Get-FileIntegrity "\\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\"
 
 FileName                                          Enabled Enforced
@@ -118,7 +118,7 @@ $PartitionToFormat.AccessPaths
 ```
 And you'll get an output like the below:
 
-```output
+```powershell
 [PS] C:\>$PartitionToFormat.AccessPaths
 C:\ExchangeVolumes\ExVolXX\
 \\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\
