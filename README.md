@@ -162,4 +162,5 @@ C:\ExchangeVolumes\ExVolXX\test-createdAFTERdisablingFileIntegCheck.txt False   
 
 #>
 
-# CONCLUSION: All files created AFTER File Integrity disabled on the root have their integrity DISABLED (Y)
+**CONCLUSION: All files created AFTER File Integrity disabled on the root have their integrity DISABLED
+All files created BEFORE file integrity disabled will have their integritythat remain ENABLED**
