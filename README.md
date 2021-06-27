@@ -60,7 +60,7 @@ FileName                                          Enabled Enforced
 You can enable or disable Integrity Streams uing Set-FileIntegrity:
 
 ```powershell
-Set-FileIntegrity "\\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\" -Enabled $False
+Set-FileIntegrity "\\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\" -Enable $False
 ```
 
 If you don't want to copy/paste or type the whole volume number, you can use the PowerShell variable you used before where you stored the Partition object (```$PartitionToCheck```):
@@ -74,7 +74,7 @@ $PartitionToCheck = Get-Partition -DiskNumber $DiskToCheck.Number -PartitionNumb
 Get-FileIntegrity $PartitionToCheck.AccessPaths[0]
 
 #And to set the integrity streams status:
-Set-FileIntegrity $PartitionToCheck.AccessPaths[0] -Enabled $false
+Set-FileIntegrity $PartitionToCheck.AccessPaths[0] -Enable $false
 ```
 
 
