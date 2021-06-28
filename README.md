@@ -1,6 +1,6 @@
 # Setting Integrity Streams After or While Formatting a Volume
 
-## Prior to format the disk if the new partition is not created yet you can use powershell or diskmgmt.msc to create a new one.
+## Prior to format the disk if the new partition is not created yet you can use powershell or diskmgmt.msc to create a new one
 
 > **NOTE**: If a partition is already created, move to next section. 
 
