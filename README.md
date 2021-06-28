@@ -2,7 +2,7 @@
 
 There are 2 ways to set Integrity Streams on Windows volumes:
 
-## when formatting the volume using Format-Volume
+## when formatting the volume using ```Format-Volume```
 
 ```powershell
 # First we get the disk number that we wish to format in a variable (same Disk <number> you see on the Disk Management Console)
