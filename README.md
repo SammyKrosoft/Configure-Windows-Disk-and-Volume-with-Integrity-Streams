@@ -2,7 +2,7 @@
 
 There are 2 ways to set Integrity Streams on Windows volumes:
 
-- when formatting the volume using Format-Volume
+## when formatting the volume using Format-Volume
 
 ```powershell
 # First we get the disk number that we wish to format in a variable (same Disk <number> you see on the Disk Management Console)
@@ -17,7 +17,7 @@ $PartitionToFormat = Get-Partition -DiskNumber $DiskToFormat.Number -PartitionNu
 Format-Volume -Partition $PartitionToFormat –AllocationUnitSize 65536 –FileSystem REFS –NewFileSystemLabel “ExVolXX" –SetIntegrityStreams:$false -confirm:$false
 ```
 
-- or after formatting, using ```Set-FileIntegrity```
+## or after formatting, using ```Set-FileIntegrity```
 
 You can use ```Get-FileIntegrity``` on the volume to check if the "IntegrityStreams" is enabled or not. For the whole volume, you'll have to run ```Get/Set-FileIntegrity``` on the root volume.
 For this, it's easier to get if the volume has a letter or mountpoints assigned to it, **BUT** you can also check the volume root using the Volume ID.
@@ -25,24 +25,26 @@ For this, it's easier to get if the volume has a letter or mountpoints assigned 
 To get the volume ID, you need to get the partition you want to check in Powershell, which is achieved using the same commands we used above when we formatted the volume:
 
 ```powershell
+# Get the disk number in a variable
 $DiskToCheck = Get-Disk 3
+#Then get the partition corresponding to that disk, take partition nb #2 because ReFS uses a reserved space for the first partition
 $PartitionToCheck = Get-Partition -DiskNumber $DiskToCheck.Number -PartitionNumber 2
 ```
 
-And to get the volume access point to use with Get/Set-FileIntegrity:
+And to get the volume root access point to use with Get/Set-FileIntegrity:
 
 ```powershell
 $PartitionToCheck.AccessPaths
 ```
 
-If you didn't assign mountpoints or letters to that volume, you'll see something like the below:
+If you didn't assign mountpoints or letters to that volume, you'll only see the volume ID like the below:
 
 ```powershell
 [PS] C:\>$PartitionToFormat.AccessPaths
 \\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\
 ```
 
-And finally, to check if Integrity Streams is enabled or not, you just need to run Get/Set-FileIntegrity on the above access path:
+And finally, to check if Integrity Streams is enabled or not, you just need to run Get/Set-FileIntegrity on the above access path (or any existing access point if you have some):
 
 ```powershell
 Get-FileIntegrity "\\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\"
@@ -57,13 +59,13 @@ FileName                                          Enabled Enforced
 \\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\ False   True    
 ```
 
-You can enable or disable Integrity Streams using Set-FileIntegrity:
+You can enable or disable Integrity Streams using Set-FileIntegrity on that volume:
 
 ```powershell
 Set-FileIntegrity "\\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\" -Enable $False
 ```
 
-If you don't want to copy/paste or type the whole volume number, you can use the PowerShell variable you used before where you stored the Partition object (```$PartitionToCheck```):
+If you don't want to copy/paste or type the whole volume number, you can use the PowerShell variable you used before where you stored the Partition object (```$PartitionToCheck```) and call the ```accesspaths``` property of that object:
 
 ```powershell
 #Just pasting again the command sequence to store the partition object in a PowerShell variable:
