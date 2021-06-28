@@ -10,7 +10,7 @@ $DiskToFormat = Get-Disk 3
 
 #Then we get the partition to format in a variable
 $PartitionToFormat = Get-Partition -DiskNumber $DiskToFormat.Number -PartitionNumber 2
-#Note we're formatting partition #2, as #1 is usually reserved for chechsums when using ReFS
+#Note we're formatting partition #2, as #1 is usually reserved when a new partition is created in GPT type.
 
 #Format-Volume is the only way to set Integrity Streams on the whole volume. After this you will need to provide a
 # drive letter or volume mountpoint root and use Set-FileIntegrity
