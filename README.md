@@ -137,18 +137,20 @@ and then:
 
 ## And the equivalent in PowerShell
 
+
 And in PowerShell that would be like:
 
 ```powershell
-#Just taking back the variable defined above before formatting, as it will design the same partition we've been working with 
-$PartitionToFormat = Get-Partition -DiskNumber $DiskToFormat.Number -PartitionNumber 2
+#Just pasting again the command sequence to store the partition object in a PowerShell variable:
+$DiskToCheck = Get-Disk 3
+$PartitionToCheck = Get-Partition -DiskNumber $DiskToCheck.Number -PartitionNumber 2
 
 # Specifying that we don't want to add a simple drive letter for that partition (piping the #PartitionToFormat variable into Set-Partition)
-$PartitionToFormat | Set-Partition -NoDefaultDriveLetter:$True
+$PartitionToCheck | Set-Partition -NoDefaultDriveLetter:$True
 
 #Adding the mountpoint using the $PartitionToFormat variable into Add-PartitionAccessPath
 # NOTE: the NFTS folder must exist before we can assign it
-$PartitionToFormat | Add-PartitionAccessPath -AccessPath "C:\ExchangeVolumes\ExVolXX"-Passthru
+$PartitionToCheck | Add-PartitionAccessPath -AccessPath "C:\ExchangeVolumes\ExVolXX"-Passthru
 ```
 
 ## How to check that it worked using PowerShell ?
