@@ -1,8 +1,43 @@
 # Setting Integrity Streams After or While Formatting a Volume
 
-There are 2 ways to set Integrity Streams on Windows volumes:
+## Prior to format the disk if the new partition is not created yet you can use powershell or diskmgmt.msc to create a new one.
 
-## While formatting the volume using ```Format-Volume```
+> If a partition is already created, move to next section. 
+
+Otherwise, you can create a new partition (usually GPT for Exchange databases volumes) using the Disk Management console (not covered here) or using PowerShell.
+
+With PowerShell, the sequence would be like the below:
+
+1- We get the disk to check and put it in a variable	
+
+```powershell
+$DiskToSetup = Get-Disk 3  
+```
+
+2- We check the disk information
+
+```powershell
+$DiskToSetup | ft -a 
+```
+
+3a- If the disk has not been initialized yet, we run this:	
+```powershell
+Initialize-Disk $DiskToSetup.Number -PartitionStyle GPT
+```
+
+3b- If the disk has been initialized but not in MBR, we can run this
+```powershell
+Set-Disk -Number $DiskToSetup.Number -PartitionStyle GPT 
+```
+
+4- finally, you can create a new partition
+```powershell
+New-Partition -UseMaximumSize -DiskNumber $DiskToSetup.Number
+```
+
+Then, there are 2 ways to set Integrity Streams on Windows volumes:
+
+## Setting Integrity Streams While formatting the volume using ```Format-Volume```
 
 > **Note**: Disk partitionned using GPT partition (GPT stands for Globally Unique Identifier or GUID partition table) always have an additional partition that's a reserved space of 32MB or 128MB depending on the disk size 16GB disks and less : reserved partition is 32MB, otherwise it's 128MB. This space is referred to as the Microsoft Reserved partition or MSR, and is usually identified by Windows PowerShell as Partition #1, while the usable partition you create is referred as Partition #2.
 >
@@ -23,7 +58,7 @@ $PartitionToFormat = Get-Partition -DiskNumber $DiskToFormat.Number -PartitionNu
 Format-Volume -Partition $PartitionToFormat –AllocationUnitSize 65536 –FileSystem REFS –NewFileSystemLabel “ExVolXX" –SetIntegrityStreams:$false -confirm:$false
 ```
 
-## Or after formatting, using ```Set-FileIntegrity```
+## Setting Integrity Streams after formatting, using ```Set-FileIntegrity```
 
 You can use ```Get-FileIntegrity``` on the volume to check if the "IntegrityStreams" is enabled or not. For the whole volume, you'll have to run ```Get/Set-FileIntegrity``` on the root volume.
 For this, it's easier to get if the volume has a letter or mountpoints assigned to it, **BUT** you can also check the volume root using the Volume ID.
