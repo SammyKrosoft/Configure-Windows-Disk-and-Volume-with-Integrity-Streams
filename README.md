@@ -2,7 +2,7 @@
 
 There are 2 ways to set Integrity Streams on Windows volumes:
 
-## when formatting the volume using ```Format-Volume```
+## When formatting the volume using ```Format-Volume```
 
 > **Note**: Disk partitionned using GPT partition (GPT stands for Globally Unique Identifier or GUID partition table) always have a reserved space of 32MB or 128MB depending on the disk size 16GB disks and less : reserved partition is 32MB, otherwise it's 128MB. This space is referred to as the Microsoft Reserved partition or MSR.
 
@@ -23,7 +23,7 @@ $PartitionToFormat = Get-Partition -DiskNumber $DiskToFormat.Number -PartitionNu
 Format-Volume -Partition $PartitionToFormat –AllocationUnitSize 65536 –FileSystem REFS –NewFileSystemLabel “ExVolXX" –SetIntegrityStreams:$false -confirm:$false
 ```
 
-## or after formatting, using ```Set-FileIntegrity```
+## Or after formatting, using ```Set-FileIntegrity```
 
 You can use ```Get-FileIntegrity``` on the volume to check if the "IntegrityStreams" is enabled or not. For the whole volume, you'll have to run ```Get/Set-FileIntegrity``` on the root volume.
 For this, it's easier to get if the volume has a letter or mountpoints assigned to it, **BUT** you can also check the volume root using the Volume ID.
