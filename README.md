@@ -53,8 +53,7 @@ $DiskToFormat = Get-Disk 3
 $PartitionToFormat = Get-Partition -DiskNumber $DiskToFormat.Number -PartitionNumber 2
 #Note we're formatting partition #2, as #1 is usually reserved when a new partition is created in GPT type.
 
-#Format-Volume is the only way to set Integrity Streams on the whole volume. After this you will need to provide a
-# drive letter or volume mountpoint root and use Set-FileIntegrity
+#The -SetIntegrityStreams parameter is used to enable or disable file integrity streams feature for the whole volume with the Format-Volume cmdlet.
 Format-Volume -Partition $PartitionToFormat –AllocationUnitSize 65536 –FileSystem REFS –NewFileSystemLabel “ExVolXX" –SetIntegrityStreams:$false -confirm:$false
 ```
 
