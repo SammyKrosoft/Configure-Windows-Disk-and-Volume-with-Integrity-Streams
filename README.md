@@ -4,7 +4,7 @@ There are 2 ways to set Integrity Streams on Windows volumes:
 
 ## While formatting the volume using ```Format-Volume```
 
-> **Note**: Disk partitionned using GPT partition (GPT stands for Globally Unique Identifier or GUID partition table) always have a reserved space of 32MB or 128MB depending on the disk size 16GB disks and less : reserved partition is 32MB, otherwise it's 128MB. This space is referred to as the Microsoft Reserved partition or MSR.
+> **Note**: Disk partitionned using GPT partition (GPT stands for Globally Unique Identifier or GUID partition table) always have an additional partition that's a reserved space of 32MB or 128MB depending on the disk size 16GB disks and less : reserved partition is 32MB, otherwise it's 128MB. This space is referred to as the Microsoft Reserved partition or MSR, and is usually identified by Windows PowerShell as Partition #1, while the usable partition you create is referred as Partition #2.
 >
 >- [More information here about GPT partitions](https://www.diskpart.com/articles/gpt-reserved-partition-128mb.html)
 >
