@@ -1,4 +1,4 @@
-# Setting Integrity Streams
+# Setting Integrity Streams After or While Formatting a Volume
 
 There are 2 ways to set Integrity Streams on Windows volumes:
 
