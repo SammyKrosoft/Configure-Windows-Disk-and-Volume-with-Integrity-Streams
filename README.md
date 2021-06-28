@@ -36,6 +36,8 @@ New-Partition -UseMaximumSize -DiskNumber $DiskToSetup.Number
 ```
 
 Then, there are 2 ways to set Integrity Streams on Windows volumes:
+- setting it while formatting the volume
+- setting it after the volume is formatted
 
 ## Setting Integrity Streams While formatting the volume using ```Format-Volume```
 
