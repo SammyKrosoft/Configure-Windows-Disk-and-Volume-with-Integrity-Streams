@@ -110,9 +110,9 @@ $PartitionToFormat = Get-Partition -DiskNumber $DiskToFormat.Number -PartitionNu
 # Specifying that we don't want to add a simple drive letter for that partition (piping the #PartitionToFormat variable into Set-Partition)
 $PartitionToFormat | Set-Partition -NoDefaultDriveLetter:$True
 
-#Adding the mountpoint using the #partitionToFormat variable into Add-PartitionAccessPath
+#Adding the mountpoint using the $PartitionToFormat variable into Add-PartitionAccessPath
 # NOTE: the NFTS folder must exist before we can assign it
-$PartitionToFormat | Add-PartitionAccessPath $PartitionToFormat -AccessPath "C:\ExchangeVolumes\ExVolXX"-Passthru
+$PartitionToFormat | Add-PartitionAccessPath -AccessPath "C:\ExchangeVolumes\ExVolXX"-Passthru
 ```
 
 ## How to check that it worked using PowerShell ?
