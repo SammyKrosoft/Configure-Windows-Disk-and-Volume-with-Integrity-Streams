@@ -2,7 +2,7 @@
 
 ## Prior to format the disk if the new partition is not created yet you can use powershell or diskmgmt.msc to create a new one.
 
-> If a partition is already created, move to next section. 
+> **NOTE**: If a partition is already created, move to next section. 
 
 Otherwise, you can create a new partition (usually GPT for Exchange databases volumes) using the Disk Management console (not covered here) or using PowerShell.
 
