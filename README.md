@@ -1,6 +1,6 @@
 # Setting Integrity Streams After or While Formatting a Volume
 
-> **Note:** setting File Integrity or Integrity Streams at the volume root is only possible using Powershell. Integrity Streams are only available for ReFS partitions or volumes. You can set it while formatting using ```Format-Volume``` with the -SetIntegrityStreams boolean parameter, or after formatting using Set-FileIntegrity with the -Enable parameter (not "-Enabled", I made the mistake a few times - it just errors out).
+> **Note:** setting File Integrity or Integrity Streams at the volume root is only possible using Powershell. Integrity Streams are only available for ReFS partitions or volumes. You can set it while formatting using ```Format-Volume``` with the -SetIntegrityStreams boolean parameter, or after formatting using ```Set-FileIntegrity``` at the volume root with the -Enable parameter (not "-Enabled", I made the mistake a few times - it just errors out).
 
 ## Prior to format the disk if the new partition is not created yet you can use powershell or diskmgmt.msc to create a new one
 
