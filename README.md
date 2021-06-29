@@ -1,7 +1,7 @@
 # Configuring a Disk for Exchange Server, and Setting Integrity Streams After or While Formatting a Volume
 
 
-As I work mostly with Exchange Servers, the disk configuration recommendation for Exchange 2016/2019 is the following:
+As I work mostly with Exchange Servers, the examples given in this article are for the disk configuration recommendation for Exchange 2016/2019 which is the following:
 
 - Disk configured as GPT
 - Partition formatted as ReFS
@@ -10,7 +10,7 @@ As I work mostly with Exchange Servers, the disk configuration recommendation fo
 
 [For all the details about Disk supported and recommended configurations, check this Microsoft official documentation page here (right-click "Open link in new Tab" to keep this page open).](https://docs.microsoft.com/en-us/exchange/plan-and-deploy/deployment-ref/storage-configuration?view=exchserver-2019)
 
-The disk setting examples below are based on a recommended disk configuration for Exchange server databases.
+The disk setting examples below are based on a recommended disk configuration for Exchange server databases but you can use these for any other workload of course. just replace the values of the examples by values required for your applications (GPT / MBR, allocation unit size, partition formatting type NTFS/ReFS/FAT32/etc...).
 
 > **Note:** setting File Integrity or Integrity Streams at the volume root is only possible using Powershell. Integrity Streams are only available for ReFS partitions or volumes. You can set it while formatting using ```Format-Volume``` with the -SetIntegrityStreams boolean parameter, or after formatting using ```Set-FileIntegrity``` at the volume root with the -Enable parameter (not "-Enabled", I made the mistake a few times - it just errors out).
 
