@@ -4,9 +4,13 @@
 
 > **NOTE**: If a partition is already created, move to next section. 
 
-You can create a new partition (usually GPT for Exchange databases volumes) using the Disk Management console (not fully covered here but very easy as in right-click "New simple volume") or using PowerShell.
+You can create a new partition using the Disk Management console (not fully covered here but very easy as in right-click "New simple volume") or using PowerShell.
 
-The management console's new volume creation would look like:
+Before creating a new volume or partition, ensure your disk is configured as GPT disk:
+
+<img src=https://user-images.githubusercontent.com/33433229/123825129-a3ebce00-d8cc-11eb-8c46-25bb653d088b.png width = 300>
+
+Then the management console's new volume creation would look like:
 
 <img src=https://user-images.githubusercontent.com/33433229/123822287-245cff80-d8ca-11eb-8069-c14b009b14d7.png width = 300>
 
@@ -59,7 +63,7 @@ Then, there are 2 ways to set Integrity Streams on Windows volumes:
 
 ## Setting Integrity Streams While formatting the volume using ```Format-Volume```
 
-> **Note**: Disk partitionned using GPT partition (GPT stands for Globally Unique Identifier or GUID partition table) always have an additional partition that's a reserved space of 32MB or 128MB depending on the disk size 16GB disks and less : reserved partition is 32MB, otherwise it's 128MB. This space is referred to as the Microsoft Reserved partition or MSR, and is usually identified by Windows PowerShell as Partition #1, while the usable partition you create is referred as Partition #2.
+> **Note**: Disk partitionned on a GPT disk (GPT stands for Globally Unique Identifier Partition Table or GUID partition table) always have an additional partition that's a reserved space of 32MB or 128MB depending on the disk size 16GB disks and less : reserved partition is 32MB (disk <= 16GB), otherwise it's 128MB. This space is referred to as the Microsoft Reserved partition or MSR, and is usually identified by Windows PowerShell as Partition #1, while the usable partition you create is referred as Partition #2.
 >
 >- [More information here about GPT partitions](https://www.diskpart.com/articles/gpt-reserved-partition-128mb.html)
 >
