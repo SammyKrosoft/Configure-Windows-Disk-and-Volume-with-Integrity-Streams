@@ -86,7 +86,7 @@ If you didn't assign mountpoints or letters to that volume, you'll only see the 
 \\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\
 ```
 
-And finally, to check if Integrity Streams is enabled or not, you just need to run Get/Set-FileIntegrity on the above access path (or any existing access point if you have some):
+And finally, to check if Integrity Streams is enabled or not, you just need to run ```Get/Set-FileIntegrity``` on the above access path (or any existing access point if you have some):
 
 ```powershell
 Get-FileIntegrity "\\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\"
