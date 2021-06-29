@@ -21,6 +21,7 @@ then the screens sequence :
 > NOTE: don't assign a drive letter or drive path yet, we'll do it later (I like baby steps to ensure no mistakes are made)
 
 You can format the disk now (choosing ReFS, and **not** NTFS), but if you do so you'll have to use ```Set-FileIntegrity``` later to ensure Integrity Streams is disabled. I prefer not formatting it now and use ```Format-Volume``` to be able to set the Integrity Streams aka File Integrity at the volume level with ```–SetIntegrityStreams:$false``` during the disk formatting.
+
 <img src=https://user-images.githubusercontent.com/33433229/123823004-c7157e00-d8ca-11eb-83e1-006a919dbd74.png width = 200>
 
 With PowerShell, the sequence would be like the below:
