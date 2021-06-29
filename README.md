@@ -57,6 +57,8 @@ Set-Disk -Number $DiskToSetup.Number -PartitionStyle GPT
 New-Partition -UseMaximumSize -DiskNumber $DiskToSetup.Number
 ```
 
+Additionnally, you can also use DiskPart to convert a disk to GPT or MBR - [Here's MS doc about Diskpart procedure to convert a disk to GPT](https://docs.microsoft.com/en-us/windows-server/storage/disk-management/change-an-mbr-disk-into-a-gpt-disk)
+
 Then, there are 2 ways to set Integrity Streams on Windows volumes:
 - setting it while formatting the volume
 - setting it after the volume is formatted
