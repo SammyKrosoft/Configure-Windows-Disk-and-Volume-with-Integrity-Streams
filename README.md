@@ -2,6 +2,15 @@
 
 > **Note:** setting File Integrity or Integrity Streams at the volume root is only possible using Powershell. Integrity Streams are only available for ReFS partitions or volumes. You can set it while formatting using ```Format-Volume``` with the -SetIntegrityStreams boolean parameter, or after formatting using ```Set-FileIntegrity``` at the volume root with the -Enable parameter (not "-Enabled", I made the mistake a few times - it just errors out).
 
+As I work mostly with Exchange Servers, the disk configuration recommendation for Exchange 2016/2019 is the following:
+
+- Disk configured as GPT
+- Formatted as ReFS
+- Formatted with an Allocation Unit Size of 64 KiloBytes (65,535 bytes)
+- ReFS Integrity Streams disabled (as these have a performance hit on disks that can affect database writes performance)
+
+The disk setting examples below are based on a recommended disk configuration for Exchange server databases.
+
 ## Prior to format the disk if the new partition is not created yet you can use powershell or diskmgmt.msc to create a new one
 
 > **NOTE**: If a partition is already created, move to next section. 
