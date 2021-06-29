@@ -6,7 +6,7 @@
 
 You can create a new partition using the Disk Management console (not fully covered here but very easy as in right-click "New simple volume") or using PowerShell.
 
-Before creating a new volume or partition, ensure your disk is configured as GPT disk; right-click on the "Disk <#number>" part and see if you have the "Convert to GPT Disk" menu - if you see "Convert to MBR Disk" menu, that means your disk is already on GPT type - you can always check later with PowerShell's ```Get-Disk <DiskNumber>``` command:
+Before creating a new volume or partition, ensure your disk is configured as GPT disk; right-click on the "Disk <#number>" part and see if you have the "Convert to GPT Disk" menu - if you see "Convert to MBR Disk" menu, that means your disk is already on GPT type - you can always check later with PowerShell's ```Get-Disk <DiskNumber>``` command, checking the ```Partition Style``` property of the disk:
 
 <img src=https://user-images.githubusercontent.com/33433229/123825129-a3ebce00-d8cc-11eb-8c46-25bb653d088b.png width = 300>
 
