@@ -107,7 +107,7 @@ You can enable or disable Integrity Streams using Set-FileIntegrity on that volu
 Set-FileIntegrity "\\?\Volume{5fc9932d-51d2-4dcb-ba25-7eb5fb6648ba}\" -Enable $False
 ```
 
-If you don't want to copy/paste or type the whole volume number, you can use the PowerShell variable you used before where you stored the Partition object (```$PartitionToCheck```) and call the ```accesspaths``` property of that object:
+If you don't want to copy/paste or type the whole volume GUID, you can use the PowerShell variable you used before where you stored the Partition object (```$PartitionToCheck```) and call the ```accesspaths``` property of that object:
 
 ```powershell
 #Just pasting again the command sequence to store the partition object in a PowerShell variable:
