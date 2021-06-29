@@ -6,7 +6,7 @@ As I work mostly with Exchange Servers, the disk configuration recommendation fo
 - Disk configured as GPT
 - Partition formatted as ReFS
 - Partition formatted with an Allocation Unit Size of 64 KiloBytes (65,535 bytes)
-- ReFS Integrity Streams disabled (as these can have a performance hit on disks that can affect database writes performance)
+- ReFS Integrity Streams disabled (as these have a performance hit on disks that can affect database writes performance)
 
 The disk setting examples below are based on a recommended disk configuration for Exchange server databases.
 
