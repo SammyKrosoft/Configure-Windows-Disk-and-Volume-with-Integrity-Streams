@@ -8,7 +8,7 @@ As I work mostly with Exchange Servers, the disk configuration recommendation fo
 - Partition formatted with an allocation unit size of 64 KiloBytes (65,535 bytes)
 - ReFS Integrity Streams disabled (as these have a performance hit on disks that can affect database writes performance)
 
-[For all the details about Disk supported and recommended configurations, check this Microsoft official documentation page here.](https://docs.microsoft.com/en-us/exchange/plan-and-deploy/deployment-ref/storage-configuration?view=exchserver-2019)
+[For all the details about Disk supported and recommended configurations, check this Microsoft official documentation page here (right-click "Open link in new Tab" to keep this page open](https://docs.microsoft.com/en-us/exchange/plan-and-deploy/deployment-ref/storage-configuration?view=exchserver-2019)
 
 The disk setting examples below are based on a recommended disk configuration for Exchange server databases.
 
