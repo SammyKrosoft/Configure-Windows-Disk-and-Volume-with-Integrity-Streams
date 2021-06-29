@@ -8,6 +8,8 @@ As I work mostly with Exchange Servers, the disk configuration recommendation fo
 - Partition formatted with an Allocation Unit Size of 64 KiloBytes (65,535 bytes)
 - ReFS Integrity Streams disabled (as these have a performance hit on disks that can affect database writes performance)
 
+For all the details about Disk supported and recommended configurations, [check this Microsoft official documentation page here.](https://docs.microsoft.com/en-us/exchange/plan-and-deploy/deployment-ref/storage-configuration?view=exchserver-2019)
+
 The disk setting examples below are based on a recommended disk configuration for Exchange server databases.
 
 > **Note:** setting File Integrity or Integrity Streams at the volume root is only possible using Powershell. Integrity Streams are only available for ReFS partitions or volumes. You can set it while formatting using ```Format-Volume``` with the -SetIntegrityStreams boolean parameter, or after formatting using ```Set-FileIntegrity``` at the volume root with the -Enable parameter (not "-Enabled", I made the mistake a few times - it just errors out).
