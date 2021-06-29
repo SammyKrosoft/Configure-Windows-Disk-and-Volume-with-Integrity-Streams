@@ -1,6 +1,6 @@
 # Configuring a Disk for Exchange Server, and Setting Integrity Streams After or While Formatting a Volume
 
-The disk setting examples below are based on a recommended disk configuration for Exchange server databases but you can use these for any other workload of course. If you want other settings, just replace the values of the examples by values required for your use or applications (GPT / MBR, allocation unit size, partition formatting type NTFS/ReFS/FAT32/etc...).
+The disk configurations used in this article are based on the recommended disk configuration for Exchange server databases, but you can use these for any other workload of course. If you want other settings, just replace the values of the examples by values required for your use or applications (GPT / MBR, allocation unit size, partition formatting type NTFS/ReFS/FAT32, etc...).
 
 The disk configuration recommendation for Exchange 2016/2019 is the following:
 
