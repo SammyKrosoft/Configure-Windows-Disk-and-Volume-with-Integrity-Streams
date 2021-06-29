@@ -4,7 +4,23 @@
 
 > **NOTE**: If a partition is already created, move to next section. 
 
-Otherwise, you can create a new partition (usually GPT for Exchange databases volumes) using the Disk Management console (not covered here) or using PowerShell.
+You can create a new partition (usually GPT for Exchange databases volumes) using the Disk Management console (not fully covered here but very easy as in right-click "New simple volume") or using PowerShell.
+
+The management console's new volume creation would look like:
+
+<img src=https://user-images.githubusercontent.com/33433229/123822287-245cff80-d8ca-11eb-8069-c14b009b14d7.png width = 300>
+
+then the screens sequence :
+
+<img src=https://user-images.githubusercontent.com/33433229/123822403-3f2f7400-d8ca-11eb-84ac-f39a7a46154a.png width = 200>
+
+<img src=https://user-images.githubusercontent.com/33433229/123822496-59695200-d8ca-11eb-9975-0751355d56d6.png width = 200>
+
+<img src=https://user-images.githubusercontent.com/33433229/123822545-62f2ba00-d8ca-11eb-9f24-5e96f283abb9.png width = 200>
+> NOTE: don't assign a drive letter or drive path yet, we'll do it later (I like baby steps to ensure no mistakes are made)
+
+You can format the disk now (choosing ReFS, and **not** NTFS), but if you do so you'll have to use ```Set-FileIntegrity``` later to ensure Integrity Streams is disabled. I prefer not formatting it now and use ```Format-Volume``` to be able to set the Integrity Streams during the disk formatting.
+<img src=https://user-images.githubusercontent.com/33433229/123823004-c7157e00-d8ca-11eb-83e1-006a919dbd74.png width = 200>
 
 With PowerShell, the sequence would be like the below:
 
