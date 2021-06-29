@@ -1,4 +1,4 @@
-# Configuring Disk for Exchange SErver, and Setting Integrity Streams After or While Formatting a Volume
+# Configuring a Disk for Exchange Server, and Setting Integrity Streams After or While Formatting a Volume
 
 
 As I work mostly with Exchange Servers, the disk configuration recommendation for Exchange 2016/2019 is the following:
