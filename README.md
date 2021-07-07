@@ -47,7 +47,7 @@ With PowerShell, the sequence would be like the below.
 > <img src=https://user-images.githubusercontent.com/33433229/124694542-7c3dcc80-deaf-11eb-9199-f1048c3d0300.png width = 300>
 
 
-1- We get the disk to check and put it in a variable.
+**1- We get the disk to check and put it in a variable.**
 
 *Change the Disk number (3 in the below example) with the disk you want to prepare.*
 
@@ -55,23 +55,23 @@ With PowerShell, the sequence would be like the below.
 $DiskToSetup = Get-Disk 3  
 ```
 
-2- We check the disk information
+**2- We check the disk information**
 
 ```powershell
 $DiskToSetup | ft -a 
 ```
 
-3a- If the disk has not been initialized yet, we run this:	
+**3a- If the disk has not been initialized yet, we run this:**
 ```powershell
 Initialize-Disk $DiskToSetup.Number -PartitionStyle GPT
 ```
 
-3b- If the disk has been initialized but not in MBR, we can run this
+**3b- If the disk has been initialized but not in MBR, we can run this**
 ```powershell
 Set-Disk -Number $DiskToSetup.Number -PartitionStyle GPT 
 ```
 
-4- finally, you can create a new partition
+**4- finally, you can create a new partition**
 ```powershell
 New-Partition -UseMaximumSize -DiskNumber $DiskToSetup.Number
 ```
