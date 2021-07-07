@@ -43,7 +43,9 @@ You can format the disk now (choosing ReFS, and **not** NTFS), but if you do so 
 
 With PowerShell, the sequence would be like the below:
 
-1- We get the disk to check and put it in a variable	
+1- We get the disk to check and put it in a variable.
+
+Change the Disk number (3 in the below example) with the disk you want to prepare.
 
 ```powershell
 $DiskToSetup = Get-Disk 3  
