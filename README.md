@@ -41,7 +41,10 @@ You can format the disk now (choosing ReFS, and **not** NTFS), but if you do so 
 
 <img src=https://user-images.githubusercontent.com/33433229/123823004-c7157e00-d8ca-11eb-83e1-006a919dbd74.png width = 200>
 
-With PowerShell, the sequence would be like the below:
+With PowerShell, the sequence would be like the below.
+> **NOTE**: you must launch a PowerShell console using elevated priviledges, using right-click "Run as Admin":
+>
+> ![image](https://user-images.githubusercontent.com/33433229/124694394-2cf79c00-deaf-11eb-8fd5-6c8872ad96f2.png)
 
 1- We get the disk to check and put it in a variable.
 
